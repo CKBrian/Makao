@@ -8,12 +8,12 @@ Makao is a web platform designed to simplify the process of searching for and re
 - [Features](#features)
 - [Technologies](#technologies)
 - [Getting Started](#getting-started)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
 - [Usage](#usage)
 - [API Documentation](#api-documentation)
 - [Data Model](#data-model)
-- [Contributing](#contributing)
+- [Authors](#authors)
 - [License](#license)
 
 ## Introduction
@@ -55,4 +55,13 @@ The purpose of Makao is to address the challenge people face when searching for 
    ```bash
    git clone https://github.com/CKBrian/Makao.git
    cd Makao
+   ```
+
+## API Documentation
+
+## Authors
+Brian Chumo - [Github](https://github.com/CKBrian) / [Twitter](https://twitter.com/Brianchumo10032)
+Robert Odhiambo - [Github](https://github.com/RobertOdhiz) / [Twitter](https://twitter.com/)
+
+## License
 
