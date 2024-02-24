@@ -60,8 +60,8 @@ The purpose of Makao is to address the challenge people face when searching for 
 ## API Documentation
 
 ## Authors
-Brian Chumo - [Github](https://github.com/CKBrian) / [Twitter](https://twitter.com/Brianchumo10032)
-Robert Odhiambo - [Github](https://github.com/RobertOdhiz) / [Twitter](https://twitter.com/)
+Brian Chumo - [Github](https://github.com/CKBrian) / [Twitter](https://twitter.com/Brianchumo10032).  
+Robert Odhiambo - [Github](https://github.com/RobertOdhiz) / [Twitter](https://twitter.com/).
 
 ## License
 
