@@ -1,45 +1,55 @@
 """Defines a module that implements a BaseModel class"""
 from django.db import models
 from datetime import datetime
-import uuid
+from uuid import uuid4
+
+time = "%Y-%m-%d %H:%M:%S"
 
 
 class BaseModel(models.Model):
     """Defines the BaseModel class"""
+    id = models.UUIDField(primary_key=True, editable=False, unique= True, null=False)
+    created_at = models.DateTimeField(default=datetime.utcnow(), null=False)
+    updated_at = models.DateTimeField(default=datetime.utcnow(), null=False)
 
     def __init__(self, *args, **kwargs):
-        """Defines an init class"""
+        """Initializes a class"""
         if kwargs:
             for key, value in kwargs.items():
-                if key != "__class__":
+                if key == 'created_at' or key == 'updated_at':
+                    setattr(self, key, datetime.strptime(value, "%Y-%m-%d %H:%M:%S"))
+                elif key != "__class__":
                     setattr(self, key, value)
-            if kwargs.get("created_at", None) and type(self.created_at) is str:
-                self.created_at = datetime.strptime(kwargs["created_at"], "%Y-%m-%d %H-%M-%S")
-            else:
-                self.created_at = datetime.utcnow()
-            if kwargs.get("updated_at", None) and type(self.updated_at) is str:
-                self.updated_at = datetime.strptime(kwargs["updated_at"], "%Y-%m-%d %H-%M-%S")
-            else:
-                self.updated_at = datetime.utcnow()
+                
             if kwargs.get("id", None) is None:
-                self.id = str(uuid.uuid4())
+                self.id = str(uuid4())
         else:
-            id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-            created_at = models.DateTimeField(auto_now_add=True)
-            updated_at = models.DateTimeField(auto_now=True)
+            self.id = str(uuid4())
+            self.created_at = datetime.utcnow()
+            
 
     class Meta:
-        """"""
+        """ """
         abstract = True
 
     def __str__(self):
         """String representation of the BaseModel class"""
-        if not self.id:
-            return None
-        return self.id
-        # return "[{:s}] ({:s}) {}".format(self.__class__.__name__, str(self.id), self.__dict__)
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
+    
+    def __repr__(self):
+        """ Returns the string representation of the object """
+        return self.__str__()
 
-    def to_dict(self):
-        """"""
-        pass
+    def to_dict(self, F_st=False):
+        """ Function that returns the dictionary represantation of the object """
+        new_dict = self.__dict__.copy()
+
+        if "created_at" in new_dict:
+            new_dict["created_at"] = new_dict["created_at"].strftime(time)
+        if "updated_at" in new_dict:
+            new_dict["updated_at"] = new_dict["updated_at"].strftime(time)
+        if "_sa_instance_state" in new_dict:
+            del new_dict["_sa_instance_state"]
+        new_dict["__class__"] = self.__class__.__name__
+        return new_dict
 
