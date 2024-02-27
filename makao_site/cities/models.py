@@ -12,3 +12,4 @@ class CityPlace(BaseModel):
     """ Class that represents relationship between City and Place objects """
     city_id = models.ForeignKey(City, on_delete=models.CASCADE)
     place_id = models.ForeignKey(Place, on_delete=models.CASCADE)
+
