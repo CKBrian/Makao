@@ -28,16 +28,6 @@ class BaseModel(models.Model):
                 setattr(new_instance, key, value)
         new_instance.id = str(uuid4())
         return new_instance
-    
-    @classmethod
-    def save(cls, obj):
-        if isinstance(obj, cls):
-            obj.save()
-
-    @classmethod
-    def delete(cls, obj):
-        if isinstance(obj, cls):
-            obj.delete()
 
     def __str__(self):
         """String representation of the BaseModel class"""

@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from base_model.models import BaseModel
 from django.contrib.auth.hashers import make_password
+from django.utils import timezone
 
 class CustomAccountManager(BaseUserManager):
     def create_user(self, email, first_name, last_name, password, **other_fields):
@@ -15,7 +16,7 @@ class CustomAccountManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(email=email, first_name=first_name, last_name=last_name, **other_fields)
         user.set_password(password)
-        user.save()
+        user.save(self)
         return user
 
     def create_superuser(self, email, first_name, last_name, password, **other_fields):
@@ -42,6 +43,7 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
+    last_login = models.DateTimeField(default=timezone.now)
 
 
     objects = CustomAccountManager()
