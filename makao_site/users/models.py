@@ -36,10 +36,12 @@ class CustomAccountManager(BaseUserManager):
 class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     """ Class that defines the Custom User object and inherits from BaseModel """
     email = models.EmailField(gettext_lazy('email address'), unique=True)
-    first_name = models.CharField(default="", max_length=250, blank=True)
-    last_name = models.CharField(default="", max_length=250)
-    phone_number = models.IntegerField(unique=True)
-    address = models.CharField(default="", max_length=250)
+    first_name = models.CharField(max_length=250, blank=True)
+    last_name = models.CharField(max_length=250)
+    phone_number = models.IntegerField(null=True)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
 
 
     objects = CustomAccountManager()
