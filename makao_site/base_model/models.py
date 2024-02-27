@@ -24,7 +24,7 @@ class BaseModel(models.Model):
         updated_at = timezone.now()
         new_instance = cls(created_at=created_at, updated_at=updated_at)
         if kwargs:
-            for key, value in kwargs:
+            for key, value in kwargs.items():
                 setattr(new_instance, key, value)
         new_instance.id = str(uuid4())
         return new_instance
