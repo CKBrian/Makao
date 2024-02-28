@@ -32,7 +32,8 @@ INSTALLED_APPS = [
     'cities',
     'places',
     'properties',
-    'reviews'
+    'reviews',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
