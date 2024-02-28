@@ -9,7 +9,7 @@ time = "%Y-%m-%d %H:%M:%S"
 
 class BaseModel(models.Model):
     """Defines the BaseModel class"""
-    id = models.UUIDField(primary_key=True, editable=False, unique= True, null=False)
+    id = models.UUIDField(primary_key=True, editable=False, unique= True, null=False, default=str(uuid4()))
     created_at = models.DateTimeField(default=timezone.now, null=False)
     updated_at = models.DateTimeField(default=timezone.now, null=False)
             
@@ -18,16 +18,9 @@ class BaseModel(models.Model):
         """ """
         abstract = True
 
-    @classmethod
-    def create(cls, *args, **kwargs):
-        created_at = timezone.now()
-        updated_at = timezone.now()
-        new_instance = cls(created_at=created_at, updated_at=updated_at)
-        if kwargs:
-            for key, value in kwargs.items():
-                setattr(new_instance, key, value)
-        new_instance.id = str(uuid4())
-        return new_instance
+    def save(cls, *args, **kwargs):
+        cls.updated_at = timezone.now()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         """String representation of the BaseModel class"""
