@@ -5,4 +5,4 @@ class AmenitySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Amenity
-        fields = ["name"]
+        fields = "__all__"

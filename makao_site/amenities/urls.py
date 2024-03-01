@@ -1,7 +1,12 @@
-from django.urls import path
-from .views import AmenityViewSet
+from django.urls import path, include
+from .views import AmenityViewSet, DeletUpdateAmenityView
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'', AmenityViewSet, basename='amenities')
 
 
 urlpatterns = [
-    path('/', AmenityViewSet, name="all_amenities")
+    path('', include(router.urls)),
+    path('/amenities/<str:pk>', DeletUpdateAmenityView.as_view(), name="amenity")
 ]
