@@ -8,5 +8,5 @@ router.register(r'', AmenityViewSet, basename='amenities')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('/amenities/<str:pk>', DeletUpdateAmenityView.as_view(), name="amenity")
+    path('amenities/<str:pk>', DeletUpdateAmenityView.as_view(), name="amenity")
 ]

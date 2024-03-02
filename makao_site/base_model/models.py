@@ -24,7 +24,8 @@ class BaseModel(models.Model):
 
     def __str__(self):
         """String representation of the BaseModel class"""
-        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
+        return f"({self.id}) {getattr(self, 'name', '')}"
+
     
     def __repr__(self):
         """ Returns the string representation of the object """
