@@ -24,10 +24,19 @@
   font-size: 1.25em;
   background: rgba(0, 0, 0, 0.3);
 }
-form button {
+form img {
   align-self: center;
   color: rgba(194, 232, 255, 1);
   padding: 10px 20px;
   margin-left: 1em;
   margin-right: 1em;
 }
+/* .home-main-section .property-image {
+    background-image: url(assets/images/landing-page-girl.png);
+    flex-grow: 1;
+    max-height: 70vh;
+    min-width: 30vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+  }*/
