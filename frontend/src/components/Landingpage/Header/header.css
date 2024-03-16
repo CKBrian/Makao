@@ -8,7 +8,12 @@
 }
 
 .brand-logo-name {
-  margin-left: 1em;
+  border-left: 1px solid white;
+  padding-left: 0.5em;
+}
+
+.brand-logo-name p {
+  border-left: 1em;
 }
 
 nav a {
