@@ -27,7 +27,7 @@
     justify-content: flex-start;
     margin-top: 20px;
 	margin-left: 5px;
-    font-size: 2em;
+    font-size: 1.7em;
     color: rgba(194, 232, 255, 1);
     opacity: 0.5;
     font-weight: lighter;
@@ -50,6 +50,7 @@
   }
   .addresses nav p {
     font-weight: bold;
+	font-size: 1.1em;
   }
   .social-link img {
     width: 1em;
