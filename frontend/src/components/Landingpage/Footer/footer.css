@@ -27,9 +27,10 @@
     justify-content: flex-start;
     margin-top: 20px;
 	margin-left: 5px;
-    font-size: 2.25em;
+    font-size: 2em;
     color: rgba(194, 232, 255, 1);
     opacity: 0.5;
+    font-weight: lighter;
   }
   .main-footer .addresses {
    display: flex;
