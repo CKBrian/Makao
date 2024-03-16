@@ -1,0 +1,21 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  flex-grow: 1;
+}
+
+.full-height-grow {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 900px) {
+.home-main-section {
+  display: none;
+}
+
+.home-main-section {
+  justify-content: center;
+}
+}

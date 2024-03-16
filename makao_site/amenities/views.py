@@ -1,3 +1,4 @@
+
 from rest_framework import viewsets, status
 from .models import Amenity
 from .serializers import AmenitySerializer
@@ -64,4 +65,5 @@ class AmenityViewSet(viewsets.ModelViewSet):
         instance = self.get_object()
         instance.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
 
