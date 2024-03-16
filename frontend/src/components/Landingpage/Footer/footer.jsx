@@ -50,14 +50,12 @@ function Footer () {
             <ul>
             <li>
                 <a href="/" className="social-link">
-                <img src={twitter}/>
-                Twitter
+                <img src={twitter} alt='twitter icon'/>
                 </a>
             </li>
             <li>
                 <a href="/" className="social-link">
-                <img src={facebook}/>
-                Facebook
+                <img src={facebook} alt='facebook icon'/>
                 </a>
             </li>
             </ul>
