@@ -11,7 +11,7 @@ body {
   background-color: rgba(0, 15, 34, 1);
   font-family: Poppins, Inter, sans-serif !important;
   font-size: 1.1rem;
-  color: white;
+  color: #C2E8FF;
   min-height: 100vh;
   letter-spacing: 1px;
 }
@@ -53,4 +53,8 @@ body {
 
 button {
   font-family: inherit;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

@@ -29,7 +29,7 @@ function Section () {
     }, [search]);
 
   return (
-    <>
+    <div className='sec-2'>
       <section className="home-main-section">
         <div className="call-to-action">
           <span className="title">Looking For a House?</span>
@@ -52,7 +52,7 @@ function Section () {
 	    <div className="row" id="sub-section-1">
 			<div className="card title">
 				<h5 className='subtitle'>Community</h5>
-			  <p className='cta'>Join Makao Community and Find your dream Home</p>
+			  <p className='cta'>Join Makao Community and Find your dream Home. We have a friendly community with great home owners and people who are looking for homes</p>
 			  <button className="btn">Get started</button>
 			</div>
 			<div className="card subtitle">
@@ -135,7 +135,7 @@ function Section () {
 			</div>
 		</div>
       </section>
-    </>
+    </div>
   )
 }
 

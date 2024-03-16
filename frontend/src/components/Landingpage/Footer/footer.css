@@ -21,6 +21,8 @@
     background: rgba(4, 37, 89, 1);
     border-top: 1px solid rgba(194, 232, 255, 1);
     gap: 20px;
+    padding: 40px;
+    padding-bottom: 0px;
   }
   .main-footer .brand-logo-name {
     display: flex;
@@ -36,6 +38,7 @@
    display: flex;
    justify-content: space-evenly;
    text-decoration: none;
+   flex-wrap: wrap;
   }
   .footer-nav ul {
     display: flex;

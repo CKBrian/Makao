@@ -93,13 +93,13 @@ nav a {
 
   .open {
     display: block;
-    
+    width: 100%;
+    margin-right: 10px;
+    margin-left: 10px;
+    overflow: hidden;
   }
 
   .open ul {
-    background-color: aquamarine;
-    padding: 20px;
-    height: 200px;
     overflow-y: scroll;
   }
 
@@ -122,23 +122,34 @@ nav a {
   }
 
   .mobile-nav {
-    background-color: white;
+    background-color: rgba(4, 37, 89, 1);
     padding: 1rem;
-    border-top: 2px solid blue;
+    border-left: 1px solid rgb(123, 168, 216);
+    border-right: 1px solid rgb(123, 168, 216);
     width: 100%;
     list-style: none;
-  }
-
-  .mobile-nav li {
-    margin-bottom: 0.5rem;
+    color: rgba(194, 232, 255, 1);
   }
 
   .mobile-nav a {
-    color: blue;
     text-decoration: none;
   }
 
   .mobile-nav a:hover {
-    color: #adadad;
+    color: rgba(4, 37, 89, 1);
+  }
+
+  .login-nav a {
+    display: none;
+  }
+
+  .login-nav button {
+    width: auto;
   }
 }
+
+.close {
+  display: none;
+}
+
+

@@ -25,7 +25,7 @@ function MobileMenu() {
         <ul>
           <li><a className=''>Login</a></li>
           <li>
-            <button className="btn">Sign up</button>
+            <button className={`btn ${isMenuOpen ? 'close': ''}`} >Sign up</button>
           </li>
         </ul>
       </nav>
