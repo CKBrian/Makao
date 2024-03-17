@@ -6,17 +6,22 @@ import Showcase from '../../../assets/Icons/showcase.svg';
 import WhyIcon from '../../../assets/Icons/why-choose-us.svg';
 import Search from '../../../assets/Icons/search.svg';
 import { useState, useEffect } from 'react';
+import axiosInstance from '../../../axios';
 
-const baseURL = 'http://127.0.0.1:8000/api/'
 function Section () {
 
 	const [search, setSearch] = useState('');
-    const [results, setResults] = useState({});
+    const [results, setResults] = useState([]);
+	const [error, setError] = useState('')
 
     const handleSearch = async (name) => {
-        const response = await fetch(`${baseURL}search/${name}`);
-        const data = await response.json();
-        setResults(data);
+        await axiosInstance.get(`search/?query=${name}`)
+		.then((data) => {
+			setResults(data);
+		})
+		.catch((error) => {
+			setError(error)
+		});
     };
 
     const handleInputChange = (e) => {
@@ -46,6 +51,17 @@ function Section () {
 			  onChange={handleInputChange}
             />
           </form>
+		  <div>
+			{results && 
+			<div>
+				{results.map((item, key) => {
+					<div key={key}>
+						<p>{item.name}</p>
+					</div>
+				})}
+			</div>
+			}
+		  </div>
         </div>
       </section>
       <section className="home-sub-section">
@@ -124,7 +140,7 @@ function Section () {
 				<img src={Rent} alt='rent icon' />
 			</div>
 		</div>
-	    <div className="row" id="sub-section-5">
+	    <div className="row comfort" id="sub-section-5">
 			<div className="card subtitle">
 				<img src={Comfort} alt='comfort icon' />
 			</div>

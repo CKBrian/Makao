@@ -76,7 +76,7 @@ form img {
   height: 20rem;
   overflow: hidden;
   height: auto;
-  padding-top: 60px;
+  padding-top: 30px;
   flex-wrap: wrap;
 }
 .home-sub-section .row img {
@@ -134,6 +134,7 @@ div .subtitle{
   font-size: 10em;
 }
 
-.sub-section-5 {
-  padding-bottom: 50px;
+.comfort {
+  padding-bottom: 60px;
 }
+
