@@ -1,0 +1,40 @@
+.adv-main-section {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    background: rgba(4, 37, 89, 1); 
+    
+ }
+
+.intro-sub-section, .community-sub-section, .adv-main-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 5em;
+  }
+  .left-card {
+    border: solid;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .left-card .top, .left-card .bottom {
+    width:20em;
+    font-size: 1.5em;
+    border: solid;
+  }
+  .left-card .bottom {
+    font-size: 1em;
+  }
+  .right-card {
+    width:20em;
+    border: solid;
+  }
+  .faqs-sub-section {
+    background: rgba(84, 129, 178, 1);
+    width: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
