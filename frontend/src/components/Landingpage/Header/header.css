@@ -55,14 +55,6 @@ nav a {
   border-radius: 50px;
 }
 
-.btn-login {
-  background-color: none;
-}
-
-.btn-login:hover {
-  background-color: rgb(123, 168, 216);
-  color: rgba(0, 15, 34, 1);
-}
 
 .btn-filled {
   display: flex;
@@ -72,10 +64,40 @@ nav a {
 }
 
 .login-nav {
-  display: flex;
   align-items: center;
   justify-content: center;
 }
+
+.login-nav .signup-btn {
+  font-family: inherit;
+  color: inherit;
+  padding: 1em 2em;
+  border: none;
+  border-radius: 50px;
+  margin-left: 5px;
+}
+
+.login-nav .signup-btn:hover, .signup-btn:focus {
+  color: azure;
+}
+
+.login-nav .login-btn {
+  background-color: transparent;
+  margin-left: 5px;
+}
+
+.login-nav .login-btn:hover, .login-btn:focus {
+  background-color: rgba(83, 129, 178, 0.671);
+  color: azure;
+}
+
+.btn-filled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(83, 129, 178, 1);
+}
+
 
 .mobile-nav-icon {
   display: none;
