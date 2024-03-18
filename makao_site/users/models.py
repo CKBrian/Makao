@@ -14,7 +14,6 @@ class CustomAccountManager(BaseUserManager):
             raise ValueError(gettext_lazy("Please provide an email address"))
         
 
-
         email = self.normalize_email(email)
         user = User.create(email=email, first_name=first_name, last_name=last_name, **other_fields)
         user.set_password(password)
@@ -43,7 +42,7 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=250)
     phone_number = models.IntegerField(null=True)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
     last_login = models.DateTimeField(default=timezone.now)
 

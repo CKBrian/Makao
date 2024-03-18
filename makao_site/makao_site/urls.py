@@ -36,8 +36,8 @@ urlpatterns = [
     path('v1/reviews/', include('reviews.urls')),
     path('v1/properties/', include('properties.urls')),
     path('v1/users/', include('users.urls')),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/token/blacklist/', TokenBlacklistView.as_view(), name='token_blacklist')
+    path('v1/api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('v1/api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('v1/api/token/blacklist/', TokenBlacklistView.as_view(), name='token_blacklist')
 ]
 

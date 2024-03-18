@@ -1,14 +1,88 @@
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, generics, authentication, permissions
+from rest_framework.views import APIView
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from django.contrib.auth import authenticate
 from django.middleware import csrf
 from django.contrib.auth.hashers import make_password
 from django.conf import settings
 from .models import User
 from .serializers import UserSerializer
+from .models import User
+from .serializers import CustomLoginSerializer, UserSerializer
+from django.contrib.auth import get_user_model
+from rest_framework.permissions import IsAuthenticated
+
+User = get_user_model()
+
+class CreateUserView(generics.CreateAPIView):
+    """Create a new user in the system"""
+    serializer_class = UserSerializer
+
+class CustomTokenObtainPairView(APIView):
+    """Custom view to obtain an access token and refresh token"""
+    serializer_class = CustomLoginSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data  # No need to access 'user' key
+        refresh = RefreshToken.for_user(user)
+        response = Response({
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+        }, status=status.HTTP_200_OK)
+        response['Authorization'] = f'Bearer {refresh.access_token}'
+        return response
+    
+class BlacklistTokenUpdateView(APIView):
+    permission_classes = [permissions.AllowAny]
+    authentication_classes = ()
+
+    def post(self, request):
+        try:
+            refresh_token = request.data["refresh_token"]
+            token = RefreshToken(refresh_token)
+            token.blacklist()
+            return Response(status=status.HTTP_205_RESET_CONTENT)
+        except Exception as e:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        
+    
+class ManageUserView(generics.RetrieveUpdateAPIView):
+    """Manage the authenticated user"""
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    def get_object(self):
+        """Retrieve and return the authenticated user"""
+        return self.request.user
+    
+class ListUsers(APIView):
+    """
+    View to list all users in the system.
+    * Requires token authentication.
+    * Only admin users are able to access this view.
+    """
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAdminUser]
+    def get(self, request, format=None):
+        """
+        Return a list of all users.
+        """
+        users = User.objects.all()
+        usernames = [user.email for user in users]
+        return Response(usernames)
+
+
+class GetUserDetails(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user  # Get the authenticated user
+        serialized_user = UserSerializer(user)  # Replace with your user serializer
+        return Response(serialized_user.data, status=status.HTTP_200_OK)
 
 def get_tokens_for_user(user):
     """
@@ -38,6 +112,8 @@ class UserViewSet(viewsets.ModelViewSet):
             'Create': '/register/',
             'Update': '/update-user/',
             'Delete': '/delete-user/',
+            'Check Authentication status for User': '/check-auth/',
+            'Logout': '/logout'
         }
         return Response(usr_routes)
 
@@ -59,7 +135,7 @@ class UserViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['POST'], url_path='login')
     def login_user(self, request):
         """
-        Authenticate a user, generate JWT tokens, and set an HTTP-only cookie.
+        Authenticate a user, generate JWT tokens, and return them along with the user ID.
         """
         data = request.data
         response = Response()
@@ -67,23 +143,30 @@ class UserViewSet(viewsets.ModelViewSet):
         email = data.get('email', None)
         password = data.get('password', None)
 
-        if email is None or password is None:
+        if not email or not password:
             return Response({"error": "Both email and password are required."}, status=status.HTTP_400_BAD_REQUEST)
 
         user = authenticate(email=email, password=password)
 
-        if user is not None:
+        if user:
             if user.is_active:
-                data = get_tokens_for_user(user)
+                access_token = AccessToken.for_user(user)
+                refresh_token = RefreshToken.for_user(user)
+
+                data = {
+                    'user_id': user.id,
+                    'access_token': str(access_token),
+                    'refresh_token': str(refresh_token),
+                }
+
                 response.set_cookie(
                     key=settings.SIMPLE_JWT['AUTH_COOKIE'],
-                    value=data["access"],
+                    value=str(access_token),
                     expires=settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME'],
                     secure=settings.SIMPLE_JWT['AUTH_COOKIE_SECURE'],
                     httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
                     samesite=settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
                 )
-                csrf.get_token(request)
 
                 response.data = {"Success": "Login successfully", "data": data}
                 return response
@@ -91,7 +174,7 @@ class UserViewSet(viewsets.ModelViewSet):
                 return Response({"No active": "This account is not active!!"}, status=status.HTTP_403_FORBIDDEN)
         else:
             return Response({"Invalid": "Invalid email or password!!"}, status=status.HTTP_401_UNAUTHORIZED)
-
+        
     @action(detail=False, methods=['PUT'], url_path='update-user', permission_classes=[IsAuthenticated])
     def update_user(self, request):
         """
@@ -115,5 +198,22 @@ class UserViewSet(viewsets.ModelViewSet):
 
         # Invalidate cookies associated with the user
         response = Response({'detail': 'User deleted successfully'}, status=status.HTTP_200_OK)
+        response.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE'])
+        return response
+
+    @action(detail=False, methods=['GET'], url_path='check-auth', permission_classes=[IsAuthenticated])
+    def check_authentication(self, request):
+        """
+        Check if the user is authenticated.
+        """
+        user = request.user
+        return Response({'detail': f'User {user.username} is authenticated.'}, status=status.HTTP_200_OK)
+    
+    @action(detail=False, methods=['POST'], url_path='logout')
+    def logout_user(self, request):
+        """
+        Logout the user and invalidate associated cookies.
+        """
+        response = Response({'detail': 'User logged out successfully'}, status=status.HTTP_200_OK)
         response.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE'])
         return response

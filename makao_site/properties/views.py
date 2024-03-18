@@ -19,6 +19,7 @@ class PropertyViewSet(viewsets.ModelViewSet):
             'Create': '/property-create/',
             'Update': '/property-update/',
             'Delete': '/property-delete/',
+            'Search Properties': '/search/'
         }
         return Response(bk_routes)
 
@@ -64,4 +65,20 @@ class PropertyViewSet(viewsets.ModelViewSet):
         instance = self.get_object()
         instance.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+    @action(detail=False, methods=['GET'], url_path='search')
+    def search_properties(self, request):
+        """Searches properties based on search criteria"""
+        query_params = request.query_params
+        search_query = query_params.get('query', '')
+        if search_query:
+            search_results = self.handle_search(search_query)
+            serializer = self.get_serializer(search_results, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response({}, status=status.HTTP_200_OK)
+        
+    def handle_search(self, query):
+        """Perform search operation based on the query"""
+        return Property.objects.filter(name__icontains=query)
 
