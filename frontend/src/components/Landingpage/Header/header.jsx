@@ -48,10 +48,10 @@ function MobileMenu() {
       </a>
       <nav className={`main-nav ${isMenuOpen ? 'open' : ''}`}>
         <ul className="mobile-nav">
-          <li><a href="">About</a></li>
-          <li><a href="">Rent</a></li>
-          <li><a href="">Community</a></li>
-          <li><a href="">Advertise</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/listings">Rent</a></li>
+          <li><a href="/community">Community</a></li>
+          <li><a href="/advertise">Advertise</a></li>
         </ul>
       </nav>
       <nav className="login-nav">
