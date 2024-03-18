@@ -5,6 +5,7 @@ import LoginForm from './components/Auth/Login/login.jsx';
 import RegistrationForm from './components/Auth/Reg/RegForm.jsx';
 
 function App() {
+
   return (
     <Router>
       <Routes>

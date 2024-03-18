@@ -4,8 +4,10 @@ import './login.css';
 import Eye from '../../../assets/Icons/eye.svg';
 import Eye_Slash from '../../../assets/Icons/eye-slash.svg';
 import { useNavigate } from 'react-router-dom';
+import Cookie from 'universal-cookie';
 
-function LoginForm() {
+
+function LoginForm({ message }) {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -13,9 +15,9 @@ function LoginForm() {
   const [error, setError] = useState('');
   const [isPasswordShown, setIsPasswordShown] = useState(false);
   const [success, setSuccess] = useState('');
-  const [loading, setIsLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const navigate = useNavigate();
+  const cookies = new Cookie()
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -24,16 +26,23 @@ function LoginForm() {
     setSuccess(null);
 
     try {
-      const response = await axiosInstance.post('users/login/', {
+      const response = await axiosInstance.post('users/accounts/login/', {
         email: formData.email,
         password: formData.password,
       });
 
-      const authToken = response.data.data;
+      console.log(response);
+      const data = response.data;
 
-      if (authToken) {
+      if (response.status === 200) {
+        cookies.set('access_token', data.access, {
+          path: '/',
+          httpOnly: true,
+          secure: false
+        });
+        localStorage.setItem('refresh_token', data.refresh);
         setSuccess('Login successful!');
-        navigate('/')
+        navigate('/');
       } else {
         setError('Invalid response received.');
       }
@@ -42,7 +51,6 @@ function LoginForm() {
       console.error('Login failed', error);
     } finally {
       setSubmitting(false);
-      setIsLoading(false);
     }
   };
 
@@ -61,6 +69,10 @@ function LoginForm() {
   return (
     <div className='login-container'>
       <p className='logo'>Makao</p>
+      {message &&
+      <div>
+        {message}
+        </div>}
       <form onSubmit={handleLogin} className='login-form'>
       <h6 className='login-title'>Login</h6>
         <input

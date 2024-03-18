@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../../axios';
+import Cookie from 'universal-cookie';
+
+const cookies = new Cookie;
 
 function MobileMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,13 +11,13 @@ function MobileMenu() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axiosInstance.get('/users/check-auth/')
-      .then(response => {
-        setIsLoggedIn(true);
-      })
-      .catch(error => {
-        setIsLoggedIn(false);
-      });
+    const refresh_token = localStorage.getItem('refresh_token');
+
+    if (refresh_token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
   }, []);
 
   const toggleMenu = () => {
@@ -22,10 +25,16 @@ function MobileMenu() {
   };
 
   const handleLogout = () => {
-    axiosInstance.post('/users/logout/')
+    axiosInstance.post('users/logout/blacklist/', {
+      refresh_token: localStorage.getItem('refresh_token')
+    })
       .then(response => {
+        if (response.status === 205) {
+        localStorage.removeItem('refresh_token');
+        cookies.remove('access_token');
         setIsLoggedIn(false);
         navigate('/');
+        };
       })
       .catch(error => {
         console.error('Error logging out:', error);

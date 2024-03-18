@@ -15,13 +15,15 @@ function Section () {
 	const [error, setError] = useState('')
 
     const handleSearch = async (name) => {
-        await axiosInstance.get(`search/?query=${name}`)
-		.then((data) => {
-			setResults(data);
+		try {
+        await axiosInstance.get(`properties/search/?query=${name}`)
+		.then((response) => {
+			setResults(response.data);
 		})
-		.catch((error) => {
+		} catch {(error) => {
 			setError(error)
-		});
+		}};
+
     };
 
     const handleInputChange = (e) => {
@@ -51,17 +53,17 @@ function Section () {
 			  onChange={handleInputChange}
             />
           </form>
-		  <div>
-			{results && 
-			<div>
-				{results.map((item, key) => {
-					<div key={key}>
-						<p>{item.name}</p>
-					</div>
-				})}
+		  <div className='search-results'>
+			{Array.isArray(results) && results.length > 0 && (
+				<div className='result-item'>
+					{results.map((item, key) => (
+						<div key={key} className='result-detail'>
+							<p>{item.name}</p>
+						</div>
+					))}
+				</div>
+			)}
 			</div>
-			}
-		  </div>
         </div>
       </section>
       <section className="home-sub-section">

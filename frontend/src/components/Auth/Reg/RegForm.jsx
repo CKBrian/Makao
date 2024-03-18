@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axiosInstance from '../../../axios';
 import './RegForm.css';
 import House from '../../../assets/Images/house.jpg';
+import { useNavigate } from 'react-router-dom';
 
 function RegistrationForm() {
     const [step, setStep] = useState(1);
@@ -15,6 +16,7 @@ function RegistrationForm() {
         email: "",
         password: ""
     });
+    const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -33,8 +35,9 @@ function RegistrationForm() {
         try {
             const res = await axiosInstance.post('/users/register/', formData);
 
-            if (res.status === 200) {
+            if (res.status === 201) {
                 setSuccess('Account Created Successfully.');
+                navigate('/login');
             }
         } catch (error) {
             setError('Failed to create Account.');
@@ -57,7 +60,7 @@ function RegistrationForm() {
                 <img src={House} alt='Login side image' />
             </div>
             <div className='reg-container'>
-                <p className='logo'>Makao</p>
+                <p className='logo' onClick={() => navigate('/')}>Makao</p>
                 <form onSubmit={handleSignUp} className='reg-form'>
                     <h6 className='signup-title'>Sign Up</h6>
                     {step === 1 &&
@@ -128,7 +131,6 @@ function RegistrationForm() {
                     }
                 </form>
                 {error && <p className='error-msg'>{error}</p>}
-                {success && <p className='success-msg'>{success}</p>}
             </div>
         </div>
     );

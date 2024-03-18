@@ -138,3 +138,29 @@ div .subtitle{
   padding-bottom: 60px;
 }
 
+.search-results {
+  background-color: rgba(30, 32, 36, 0.822);
+  border-radius:0;
+  margin: 10px;
+  border-radius: 10px;
+  max-height: 200px;
+}
+
+.result-item {
+  color: #fff;
+}
+
+.result-detail {
+  border-bottom: 1px solid #fff;
+  margin: 10px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.result-detail:last-child {
+  border-bottom: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
