@@ -1,40 +1,94 @@
 .adv-main-section {
     display: flex;
     flex-direction: column;
-    gap: 60px;
-    background: rgba(4, 37, 89, 1); 
-    
+    gap: 50px;
+    background: rgba(4, 37, 89, 1);
+    justify-content: space-evenly;
+    margin: auto;
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.5);
  }
 
-.intro-sub-section, .community-sub-section, .adv-main-section {
+.intro-sub-section, .community-sub-section {
+    width:100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    align-items: center;
     gap: 5em;
+    padding-bottom: 2.5em;
   }
-  .left-card {
-    border: solid;
+  .left-card .right-card {
     display: flex;
     flex-direction: column;
-    text-align: center;
+    flex-wrap: wrap;
   }
-  .left-card .top, .left-card .bottom {
-    width:20em;
-    font-size: 1.5em;
-    border: solid;
+  .intro-sub-section .left-card{
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .intro-sub-section .left-card .top {
+    font-size: 2em;
+    color: white;
+  }
+
+  .faqs-card .left-card {
+    font-size: 2em;
+    color: black;
+  }
+  .intro-sub-section .left-card .top, .intro-sub-section .left-card .bottom {
+    width: 15em;
+    display: flex;
+    text-align: center;
+
   }
   .left-card .bottom {
-    font-size: 1em;
+    font-size: 1.2em;
   }
   .right-card {
     width:20em;
-    border: solid;
+    gap: 5em;
   }
   .faqs-sub-section {
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
     background: rgba(84, 129, 178, 1);
-    width: 100vh;
+    color: rgba(1, 15, 33, 1);
     display: flex;
     flex-direction: column;
+    gap: 1em;
   }
-  
+
+  .faqs-sub-section .bottom{
+    margin: auto;
+  }
+  .faqs-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  button {
+    background: rgba(1, 15, 33, 1);
+    color: white;
+    font-weight: 200;
+    border-radius: 5em;
+    letter-spacing: 5%;
+    font-size: 1em;
+    opacity: 0.5;
+    padding: 1em;
+  }
+  .right-card select {
+    width: 100vh;
+    padding: 12px; 
+    margin-bottom: 10px; 
+    border: none;
+    border-bottom: 1px solid rgba(1, 15, 33, 1);
+    background: rgba(84, 129, 178, 1);
+    color: rgba(1, 15, 33, 1);
+    cursor: pointer;
+    font-size: 1.2em;
+  }
+  .right-card select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px  rgba(1, 15, 33, 1)#; 
+  }

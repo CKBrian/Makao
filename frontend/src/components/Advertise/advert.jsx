@@ -10,6 +10,6 @@ const Advertise = () => {
             <Footer></Footer>
         </>
      );
-}
+} 
  
 export default Advertise;
