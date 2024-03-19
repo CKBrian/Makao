@@ -1,16 +1,16 @@
-section .price {
-    width: 200px;
+.sec-cr .price {
+    width: 500px;
     font-size: medium;
     color: inherit;
 }
-section .choice {
+.sec-cr .choice {
     font-family: Inter;
     font-size: larger;
     opacity: 0.5;
     margin: 0px;
 }
 
-section .price-btns {
+.sec-cr .price-btns {
     display: flex;
     gap: 20px;
     margin-bottom: 30px;
@@ -22,3 +22,8 @@ section .price-btns {
   .price-btns button:hover {
     opacity: 1;
   }
+
+  .brand-logo-name {
+    margin: 2em;
+    cursor: pointer;
+}

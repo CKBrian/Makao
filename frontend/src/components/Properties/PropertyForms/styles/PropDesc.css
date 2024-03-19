@@ -1,4 +1,4 @@
-section .text-desc {
+.sec-cr .text-desc {
     background: inherit;
     border-radius: 5px;
     padding: 10px 25px;
@@ -10,4 +10,13 @@ section .text-desc {
     height: 200px;
     border: solid 1px rgb(84, 129, 178, 0.5) ;
     margin-bottom: 20px;
+}
+
+.brand-logo-name {
+    margin: 2em;
+    cursor: pointer;
+}
+
+.sub {
+    bottom: 0;
 }

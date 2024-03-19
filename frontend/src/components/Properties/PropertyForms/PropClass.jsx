@@ -1,32 +1,59 @@
-
+import React from 'react';
 import "./styles/PropClass.css"
+import { useNavigate } from 'react-router-dom';
+import Building from '../../../assets/Icons/buildings.svg'
+import Single from '../../../assets/Icons/house.svg'
 
-const PropertyType = () => {
+const PropertyType = ({ formData, onNext, onChange }) => {
+    const navigate = useNavigate();
+
+    // Function to handle click on Apartment button
+    const handleApartmentClick = () => {
+        // Update formData with property_type set to 'apartments'
+        onChange({ target: { name: 'property_type', value: 'apartments' } });
+    };
+
+    // Function to handle click on Single Home button
+    const handleSingleHomeClick = () => {
+        // Update formData with property_type set to 'single home'
+        onChange({ target: { name: 'property_type', value: 'single home' } });
+    };
+
     return ( 
         <div className="main">
-            <header className="main-header">
-                <a href="/" className="brand-logo">
-                    <div className="brand-logo-name">Makao</div>
-                </a>
+            <header className="main-header-cr">
+                <div className="brand-logo brand-logo-name" onClick={() => navigate('/')}>Makao</div>
             </header>
-            <section>
+            <section className='sec-cr'>
                 <p className="sect-title">We will help you set up your Property</p>
                 <p className="info">What are you Showcasing?</p>
-                <div className="icons">
-                    <div className="apartment">
-                        <div className="aprt-icon"></div>
-                        <p>Apartment</p>
+                <div className="icons-choice">
+                    <div className="icons-item" onClick={handleApartmentClick}>
+                        <div className="aprt-icon">
+                            <img src={Building} alt='apartment' />
+                        </div>
+                        <button className='btn'>Apartment</button>
                     </div>
-                    <div className="single">
-                        <div className="single-icon"></div>
-                       <p>Single Home</p> 
+                    <div className="icons-item" onClick={handleSingleHomeClick}>
+                        <div className="single-icon">
+                            <img src={Single} alt='single' />
+                        </div>
+                       <button className='btn'>Single Home</button> 
                     </div>
                 </div>
-                <input type="text" placeholder="Property Name" />
+                <div className='prop-name'>
+                    <input
+                        name='name'
+                        type="text"
+                        placeholder="Property Name"
+                        value={formData.name}
+                        onChange={onChange}
+                    />
+                </div>
             </section>
-            <footer>
-                <a href="/advertise" className="back">&lsaquo; Back</a>
-                <a href="/add-property-location" className="next">Next &rsaquo;</a>
+            <footer className='sub'>
+                <button onClick={() => navigate('/advertise')} className="btn back">Back</button>
+                <button className="btn next" onClick={onNext}>Next</button>
             </footer>
         </div>
      );

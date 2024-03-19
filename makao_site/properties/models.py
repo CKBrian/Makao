@@ -10,12 +10,11 @@ class Property(BaseModel):
     """ Property class that represents all Property objects """
     name = models.CharField(max_length=255, null=False)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    property_type = models.CharField(max_length=255, default='')
     description = models.TextField(null=True)
     number_rooms = models.IntegerField(null=False, default=0)
-    number_bathrooms = models.IntegerField(null=False, default=0)
     rent_price = models.IntegerField(null=False, default=0)
-    latitude = models.DecimalField(null=True, default=0.0, decimal_places=4, max_digits=8)
-    longitude = models.DecimalField(null=True, default=0.0, decimal_places=4, max_digits=8)
+    location = models.CharField(max_length=255, default='')
     place_id = models.ForeignKey(Place, on_delete=models.CASCADE)
     amenities = models.ManyToManyField(Amenity, related_name="property_amenities", through="PropertyAmenity")
 

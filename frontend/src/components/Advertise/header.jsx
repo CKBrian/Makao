@@ -21,22 +21,9 @@ function MobileMenu() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleLogout = () => {
-    axiosInstance.post('/users/logout/')
-      .then(response => {
-        setIsLoggedIn(false);
-        navigate('/');
-      })
-      .catch(error => {
-        console.error('Error logging out:', error);
-      });
-  };
-
   return (
     <div className="main-header">
-      <a href="/" className="brand-logo">
-        <div className="brand-logo-name">Makao</div>
-      </a>
+        <div onClick={() => navigate('/')} className="brand-logo brand-logo-name">Makao</div>
 
       <nav className="login-nav">
         <ul>
@@ -46,9 +33,7 @@ function MobileMenu() {
                    <button className="btn login-btn">Ready to show it?</button>
               </li>
               <li>
-                <a href='/add-property-type'>
-                  <button className={`btn signup-btn ${isMenuOpen ? 'close' : ''}`}>Add Property</button>
-                </a>
+                  <button onClick={() => navigate('/add-property')} className={`btn signup-btn ${isMenuOpen ? 'close' : ''}`}>Add Property</button>
               </li>
             </>
           )}

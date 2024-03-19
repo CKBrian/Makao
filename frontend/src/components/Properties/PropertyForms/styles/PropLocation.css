@@ -1,13 +1,11 @@
-section .icons {
-    width: 100vh;
-    background: rgba(1, 15, 33, 0.5);
-    border: solid black 0.5px;
-    height: 150px;
+.sec-cr .icons {
+    width: 100%;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    margin: 2em;
 }
 .icons p {
     border: solid 0.5px black;
@@ -17,4 +15,65 @@ section .icons {
     font-size:  normal;
     background: rgba(1, 15, 33, 0.9);
     opacity: 1;
+}
+
+.brand-logo-name {
+    margin: 2em;
+    cursor: pointer;
+}
+
+.sec-cr select {
+    width: 500px;
+    padding: 0.5em;
+    font-family: inherit;
+    margin: 1.5em;
+    background-color: transparent;
+    color: white;
+    border-radius: 0.25em;
+}
+
+.sec-cr select option {
+    font-family: inherit;
+    border-radius: inherit;
+    padding: 0.5em;
+    background-color: rgba(1, 15, 33, 0.9);
+}
+
+.sec-cr select option:hover {
+    color: rgba(1, 15, 33, 0.5);
+    background-color: azure;
+}
+.sec-cr select option:first-child {
+    opacity: 50%;
+    margin-bottom: 1em;
+    color: grey;
+}
+
+.selection-container {
+    width: 500px;
+    padding: 0.5em;
+    font-family: inherit;
+    margin: 1.5em;
+    background-color: transparent;
+    color: white;
+    border-radius: 0.25em;
+}
+
+.selection-container option {
+    font-family: inherit;
+    border-bottom: 1px solid white; /* Add border between options */
+    padding: 0.5em;
+    background-color: rgba(1, 15, 33, 0.9);
+}
+
+.selection-container option:hover {
+    background-color: azure; /* Change hover background color */
+    color: rgba(1, 15, 33, 0.5); /* Change hover text color */
+    cursor: pointer;
+}
+
+.selection-container option:first-child {
+    opacity: 50%;
+    margin-bottom: 1em;
+    color: grey;
 }

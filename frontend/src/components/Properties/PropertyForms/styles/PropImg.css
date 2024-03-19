@@ -21,15 +21,20 @@
 input[type="file"] {
   display: none;
 }
-label {
+.sec-cr label {
     color: black;
 }
 
-label:hover {
+.sec-cr label:hover {
     opacity: 0.5;
     border: solid aliceblue 0.8px;
     color: white;
     opacity: 1;
     border-radius: 5px;
     padding: 10px;
+}
+
+.brand-logo-name {
+  margin: 2em;
+  cursor: pointer;
 }

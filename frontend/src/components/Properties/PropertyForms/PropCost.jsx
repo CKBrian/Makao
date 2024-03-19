@@ -1,29 +1,37 @@
 import "./styles/PropClass.css"
 import "./styles/PropCost.css"
 
-const PropertyCost = () => {
+
+const PropertyCost = ({ formData, onNext, onChange, onPrev }) => {
+    
     return ( 
         <div className="main">
-            <header className="main-header">
-                <a href="/" className="brand-logo">
+            <header className="main-header-cr">
                     <div className="brand-logo-name">Makao</div>
-                </a>
             </header>
-            <section>
+            <section className="sec-cr">
                 <p className="sect-title">We will help you set up your Property</p>
-                <p className="info">Price range</p>
-                <input type="text" placeholder="Ksh" className="price" />
-                <p className="choice">Or Choose from</p>
-                <span className="price-btns">
-                    <button>10,000</button>
-                    <button>12,000</button>
-                    <button>15,000</button>
-                    <button>20,000</button>
-                </span>
+                <p className="info">Rent Price Per Month</p>
+                <input
+                    name='rent_price'
+                    type="number"
+                    placeholder="Ksh" 
+                    className="price"
+                    value={formData.rent_price}
+                    onChange={onChange} />
+                <p className="info">Number of bedrooms</p>
+                <input
+                name="number_rooms"
+                type="number"
+                placeholder="Number of Bedrooms"
+                value={formData.number_bedroooms}
+                onChange={onChange}
+                className="price"
+                />
             </section>
-            <footer>
-                <a href="/add-property-desc" className="back">&lsaquo; Back</a>
-                <a href="/validate-property-details" className="next">Next &rsaquo;</a>
+            <footer className="sub">
+                <button onClick={onPrev} className="btn back">Back</button>
+                <button onClick={onNext} className="btn next">Next</button>
             </footer>
         </div>
      );

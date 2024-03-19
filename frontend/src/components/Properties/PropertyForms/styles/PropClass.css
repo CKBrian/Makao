@@ -1,45 +1,52 @@
 .main {
-    background-color: rgba(4, 37, 88, 1);
-    height: 100vh;
+    /* background-color: rgba(4, 37, 88, 1); */
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
-header {
+.main-header-cr {
     margin-bottom: -50px;
 }
-section {
+
+.brand-logo-name {
+    margin: 2em;
+    cursor: pointer;
+}
+.sec-cr {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    flex: 0.9;
+    gap: 1em;
 }
-section .sect-title {
+.sec-cr .sect-title {
     border-bottom: solid rgb(84, 129, 178, 0.5) ;
-    font-family: Inter;
+    font-family: Inherit;
     font-size: 28px;
     color: #c2e8ff;
     font-weight: 150;
     padding: 5px 5px; 
 }
-section .info {
-    font-family: Inter;
+.sec-cr .info {
+    font-family: Inherit;
     font-size: 20px;
     color: #ffffff;
     font-weight: 100;
     margin-top: -10px;
 }
-section .icons {
+.sec-cr .icons-choice {
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 200px;
-    width: 100%;
+    flex-wrap: wrap;
+    padding: 2em;
+    gap: 4em;
 }
-.icons .info .sect-title input {
+.icons-choice .info .sect-title input {
     padding: 0;
     margin: 0;
 }
-.icons div {
+.icons-choice div {
     border: solid 1px;
     display: flex;
     align-items: center;
@@ -48,27 +55,32 @@ section .icons {
     border-radius: 5px;
     padding: 12.5px 0px 0px 0px;
     width: 200px;
-    height: 150px;
-    font-family: Inter;
+    font-family: inherit;
     font-size: 18px;
     color: #ffffff;
     font-weight: 100;
 }
-section input {
+.sec-cr input {
+    outline: none;
     border-radius: 5px;
-    padding: 10px 25px;
-    font-family: Inter;
+    padding: 1em;
+    font-family: Inherit;
     font-size: 24px;
     color: #ffffff;
     font-weight: 100;
     width: 600px;
     height: 40px;
     border: solid 1px;
-    background-color: rgba(4, 37, 88, 1);
+    background-color: transparent;
     margin-bottom: 20px;
+    margin-top: 1em;
 }
-footer {
-    position: absolute; 
+
+.sec-cr .btn {
+    margin: 2em;
+}
+.sub {
+    /* position: absolute;  */
     width: 100%;
     bottom: 0; 
     z-index: 10;
@@ -80,7 +92,7 @@ footer {
     padding: 10px 10px;
     height: 80px;
 }
-footer a {
+.sub a {
     text-decoration: none;
     font-size: 1.1em;
     font-family: inherit;
@@ -90,23 +102,35 @@ footer a {
     padding: 5px 10px;
 }
 
-footer .next, footer .back {
+.sub .next, .sub .back {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
     font-weight: 200;
-
+    padding-right: 1.5em;
+    padding-left: 1.5em;
 }
-footer .next {
-    background-color: #010f21;
+.sub .next {
+    background-color: #006eff;
     color: #c2e8ff;
 }
-a:hover {
+.sec-cr a:hover {
     background-color: rgb(84, 129, 178);
     color: black;
   }
-a:focus {
+.sec-cr a:focus {
     opacity: 0.5;
 }
- 
+
+.icons-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.icons-item .single-icon, 
+.icons-item .aprt-icon {
+    border: none;
+}

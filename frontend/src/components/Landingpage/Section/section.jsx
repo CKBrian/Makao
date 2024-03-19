@@ -73,7 +73,7 @@ function Section () {
 			<div className="card title">
 				<h5 className='subtitle'>Community</h5>
 			  <p className='cta'>Join Makao Community and Find your dream Home. We have a friendly community with great home owners and people who are looking for homes</p>
-			  <button className="btn" onClick={navigate('/login')}>Get started</button>
+			  <button className="btn" onClick={() => navigate('/login')}>Get started</button>
 			</div>
 			<div className="card subtitle">
 				<img src={Community} alt='community icon' />
@@ -131,14 +131,14 @@ function Section () {
 			<div className="card title">
 				<h5 className='subtitle'>Showcase</h5>
 			  <p className='cta'>Showcase Your Property to a wide audience and get tenants effortlessly</p>
-			  <button className="btn" onClick={navigate('/advertise')}>Advertise</button>
+			  <button className="btn" onClick={() => navigate('/advertise')}>Advertise</button>
 			</div>
 		</div>
 	    <div className="row" id="sub-section-4">
 			<div className="card title">
 				<h5 className='subtitle'>Trusted</h5>
 			  <p className='cta'>Get to Rent from verified and trusted Residence owners</p>
-			  <button className="btn" onClick={navigate('/listings')}>Rent</button>
+			  <button className="btn" onClick={() => navigate('/listings')}>Rent</button>
 			</div>
 			<div className="card subtitle">
 				<img src={Rent} alt='rent icon' />
@@ -151,7 +151,7 @@ function Section () {
 			<div className="card title">
 				<h5 className='subtitle'>Your Choice</h5>
 			  <p className='cta'>Choose from apartments to single Homes all in one place</p>
-			  <button className="btn" onClick={navigate('/listings')}>Start Journey</button>
+			  <button className="btn" onClick={() => navigate('/listings')}>Start Journey</button>
 			</div>
 		</div>
       </section>
