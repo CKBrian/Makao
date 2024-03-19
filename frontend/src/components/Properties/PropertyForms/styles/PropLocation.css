@@ -1,0 +1,20 @@
+section .icons {
+    width: 100vh;
+    background: rgba(1, 15, 33, 0.5);
+    border: solid black 0.5px;
+    height: 150px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.icons p {
+    border: solid 0.5px black;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    font-size:  normal;
+    background: rgba(1, 15, 33, 0.9);
+    opacity: 1;
+}

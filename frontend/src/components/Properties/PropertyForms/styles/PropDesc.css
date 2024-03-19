@@ -1,0 +1,13 @@
+section .text-desc {
+    background: inherit;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 100;
+    width: 400px;
+    height: 200px;
+    border: solid 1px rgb(84, 129, 178, 0.5) ;
+    margin-bottom: 20px;
+}

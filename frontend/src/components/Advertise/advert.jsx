@@ -1,6 +1,6 @@
 
 import Footer from '../Landingpage/Footer/footer.jsx';
-import MobileMenu from '../Landingpage/Header/header.jsx';
+import MobileMenu from './header.jsx';
 import Section from './section.jsx'
 
 const Advertise = () => {

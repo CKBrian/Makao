@@ -1,0 +1,35 @@
+.drop-area {
+  border: 2px dashed rgb(84, 129, 178, 0.5);
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0.5;
+  height: 250px;
+  background: #3333337d;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.drop-area.drag-over {
+  border-color: #333;
+}
+
+.drop-area p {
+  margin-top: 10px;
+}
+
+input[type="file"] {
+  display: none;
+}
+label {
+    color: black;
+}
+
+label:hover {
+    opacity: 0.5;
+    border: solid aliceblue 0.8px;
+    color: white;
+    opacity: 1;
+    border-radius: 5px;
+    padding: 10px;
+}
