@@ -1,7 +1,8 @@
-import "./styles/PropDesc.css"
 import "./styles/PropClass.css"
+import "./styles/PropLocation.css"
 
-const PropertyDesc = () => {
+
+const PropertyLocation = () => {
     return ( 
         <div className="main">
             <header className="main-header">
@@ -11,15 +12,17 @@ const PropertyDesc = () => {
             </header>
             <section>
                 <p className="sect-title">We will help you set up your Property</p>
-                <p className="info">Write up a short and catchy description</p>
-                <textarea className="text-desc" type="text" placeholder="Property Description" rows={"10"} cols={30}></textarea>
+                <p className="info">Set up location</p>
+                <div className="icons">
+                    <p>Location</p>
+                </div>
             </section>
             <footer>
-                <a href="/add-property-images" className="back">&lsaquo; Back</a>
-                <a href="/add-property-cost" className="next">Next &rsaquo;</a>
+                <a href="/add-property-type" className="back">&lsaquo; Back</a>
+                <a href="/add-property-images" className="next">Next &rsaquo;</a>
             </footer>
         </div>
      );
 }
  
-export default PropertyDesc;
+export default PropertyLocation;

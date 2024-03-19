@@ -1,0 +1,112 @@
+.main {
+    background-color: rgba(4, 37, 88, 1);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+header {
+    margin-bottom: -50px;
+}
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex: 0.9;
+}
+section .sect-title {
+    border-bottom: solid rgb(84, 129, 178, 0.5) ;
+    font-family: Inter;
+    font-size: 28px;
+    color: #c2e8ff;
+    font-weight: 150;
+    padding: 5px 5px; 
+}
+section .info {
+    font-family: Inter;
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: 100;
+    margin-top: -10px;
+}
+section .icons {
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+    width: 100%;
+}
+.icons .info .sect-title input {
+    padding: 0;
+    margin: 0;
+}
+.icons div {
+    border: solid 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 12.5px 0px 0px 0px;
+    width: 200px;
+    height: 150px;
+    font-family: Inter;
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 100;
+}
+section input {
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: Inter;
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: 100;
+    width: 600px;
+    height: 40px;
+    border: solid 1px;
+    background-color: rgba(4, 37, 88, 1);
+    margin-bottom: 20px;
+}
+footer {
+    position: absolute; 
+    width: 100%;
+    bottom: 0; 
+    z-index: 10;
+    border-top: solid rgb(84, 129, 178, 0.5) ;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    padding: 10px 10px;
+    height: 80px;
+}
+footer a {
+    text-decoration: none;
+    font-size: 1.1em;
+    font-family: inherit;
+    color: #ffffff;
+    font-weight: 100;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+footer .next, footer .back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 200;
+
+}
+footer .next {
+    background-color: #010f21;
+    color: #c2e8ff;
+}
+a:hover {
+    background-color: rgb(84, 129, 178);
+    color: black;
+  }
+a:focus {
+    opacity: 0.5;
+}
+ 
