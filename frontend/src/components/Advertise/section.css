@@ -9,25 +9,29 @@
     color: rgba(255, 255, 255, 0.5);
  }
 
-.intro-sub-section, .community-sub-section {
+.intro-section, .community-sub-section {
     width:100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     gap: 5em;
-    padding-bottom: 2.5em;
+    padding: 100px;
+    flex-wrap: wrap;
   }
+  
   .left-card .right-card {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
   }
-  .intro-sub-section .left-card{
-    align-items: center;
+  .intro-section .left-card{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
     justify-content: center;
     gap: 10px;
   }
-  .intro-sub-section .left-card .top {
+  .intro-section .left-card .top {
     font-size: 2em;
     color: white;
   }
@@ -35,17 +39,19 @@
   .faqs-card .left-card {
     font-size: 2em;
     color: black;
+    padding: 1em;
+    text-align: center;
   }
-  .intro-sub-section .left-card .top, .intro-sub-section .left-card .bottom {
+  .intro-section .left-card .top, .intro-section .left-card .bottom {
     width: 15em;
     display: flex;
-    text-align: center;
+    text-align: left;
 
   }
   .left-card .bottom {
     font-size: 1.2em;
   }
-  .right-card {
+  .faqs-card .right-card {
     width:20em;
     gap: 5em;
   }
@@ -56,16 +62,21 @@
     color: rgba(1, 15, 33, 1);
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     gap: 1em;
   }
 
   .faqs-sub-section .bottom{
     margin: auto;
+    padding: 1em;
+    padding-bottom: 0;
+    opacity: 50%;
   }
   .faqs-card {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    flex-wrap: wrap;
   }
   button {
     background: rgba(1, 15, 33, 1);
@@ -90,5 +101,11 @@
   }
   .right-card select:focus {
     outline: none;
-    box-shadow: 0 0 0 2px  rgba(1, 15, 33, 1)#; 
+    box-shadow: 0 0 0 2px  rgba(1, 15, 33, 1); 
+  }
+
+  @media (max-width: 767px) {
+    .intro-section .top {
+      font-size: 1.5em;
+    }
   }
