@@ -174,4 +174,8 @@ nav a {
   display: none;
 }
 
+.main-header span {
+  cursor: pointer;
+}
+
 

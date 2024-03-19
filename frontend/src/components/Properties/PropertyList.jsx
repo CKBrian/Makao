@@ -1,14 +1,15 @@
-import Header from '../Shared/Header/header'
-import Footer from '../Shared/Footer/footer'
+
+import Footer from '../Landingpage/Footer/footer';
+import MobileMenu from '../Landingpage/Header/header';
 import Section from './section'
 
 
 const PropListings = () => {
     return ( 
         <>
-            <Header></Header>
+            <MobileMenu />
             <Section/>
-            <Footer></Footer>
+            <Footer />
         </>
      );
 }

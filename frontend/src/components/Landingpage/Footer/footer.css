@@ -66,3 +66,11 @@
     align-items: center;
     margin-bottom: 30px;
   }
+@media (max-width: 767px) {
+  .main-footer .footer-nav {
+    display: block;
+  }
+  .main-footer .addresses {
+    display: block;
+  }
+}

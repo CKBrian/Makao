@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../../axios';
 import Cookie from 'universal-cookie';
 
+
 const cookies = new Cookie;
 
 function MobileMenu() {
@@ -43,9 +44,9 @@ function MobileMenu() {
 
   return (
     <div className="main-header">
-      <a href="/" className="brand-logo">
+      <span className="brand-logo" onClick={() => navigate('/')}>
         <div className="brand-logo-name">Makao</div>
-      </a>
+      </span>
       <nav className={`main-nav ${isMenuOpen ? 'open' : ''}`}>
         <ul className="mobile-nav">
           <li><a href="/about">About</a></li>

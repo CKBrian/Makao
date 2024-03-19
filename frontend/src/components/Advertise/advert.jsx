@@ -1,13 +1,14 @@
-import Header from '../Shared/Header/header'
-import Footer from '../Shared/Footer/footer'
+
+import Footer from '../Landingpage/Footer/footer.jsx';
+import MobileMenu from '../Landingpage/Header/header.jsx';
 import Section from './section.jsx'
 
 const Advertise = () => {
     return ( 
         <>
-            <Header></Header>
-            <Section></Section>
-            <Footer></Footer>
+            <MobileMenu />
+            <Section />
+            <Footer />
         </>
      );
 } 

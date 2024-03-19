@@ -37,7 +37,7 @@ function RegistrationForm() {
 
             if (res.status === 201) {
                 setSuccess('Account Created Successfully.');
-                navigate('/login');
+                navigate('/redirect');
             }
         } catch (error) {
             setError('Failed to create Account.');
