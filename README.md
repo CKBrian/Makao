@@ -1,5 +1,7 @@
 # Makao
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f811bd2e-cf5d-4f1c-8688-0c2fee482141/deploy-status)](https://app.netlify.com/sites/Makao)
+
 Makao is a web platform designed to simplify the process of searching for and renting residential spaces, catering to both tenants and landlords.
 
 ## Table of Contents
@@ -7,11 +9,7 @@ Makao is a web platform designed to simplify the process of searching for and re
 - [Introduction](#introduction)
 - [Features](#features)
 - [Technologies](#technologies)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [API Documentation](#api-documentation)
+- [Getting Started](#What-Makao-offers)
 - [Data Model](#data-model)
 - [Authors](#authors)
 - [License](#license)
@@ -25,43 +23,26 @@ The purpose of Makao is to address the challenge people face when searching for 
 - User authentication (registration and login)
 - Property listing with detailed information
 - Search functionality based on specific criteria
-- Messaging system between users
-- Review system for properties
-- ...
+- Advertise Feature:Provides property listing creation for landlords with photos and descriptions.
+- Property Search Functionality:Provides a search bar for advanced search options for tenants.
+- Rent Feature:Shows property listings for potential tenants to choose from.
 
 ## Technologies
 
-- Python
-- Flask (Python web framework)
-- JavaScript (for front-end development)
-- HTML
-- CSS
-- Digital Ocean (for hosting)
-- SQLAlchemy (Python SQL toolkit and Object-Relational Mapping)
+- DJango (for Backend web framework)
+- Reactjs (for front-end development)
+- CSS (Styling)
+- Netlify (for hosting)
 - ...
 
-## Getting Started
+## What Makao Offers
 
-### Prerequisites
-
-- Python 3.x
-- Pip (Python package installer)
-- Django
-
-### Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/CKBrian/Makao.git
-   cd Makao
-   ```
-
-## API Documentation
+We noticed that most people struggle while house hunting which is a tiresome process of identifying the ideal place to settle in, within your affordable price range, especially in the urban setup, by having to search estate by estate or through agents. We hope to provide a solution that is convenient, time-saving, cost-effective and just a few clicks away without the pressure of struggling with where to start looking.
+**To use the webapp visit us at [Makao.com](https://app.netlify.com/sites/Makao)!**
 
 ## Authors
+
 Brian Chumo - [Github](https://github.com/CKBrian) / [Twitter](https://twitter.com/Brianchumo10032).  
 Robert Odhiambo - [Github](https://github.com/RobertOdhiz) / [Twitter](https://twitter.com/).
 
 ## License
-
