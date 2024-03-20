@@ -1,6 +1,6 @@
 # Makao
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f811bd2e-cf5d-4f1c-8688-0c2fee482141/deploy-status)](https://app.netlify.com/sites/Makao)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f811bd2e-cf5d-4f1c-8688-0c2fee482141/deploy-status)](https://makao.netlify.app)
 
 Makao is a web platform designed to simplify the process of searching for and renting residential spaces, catering to both tenants and landlords.
 
@@ -38,7 +38,7 @@ The purpose of Makao is to address the challenge people face when searching for 
 ## What Makao Offers
 
 We noticed that most people struggle while house hunting which is a tiresome process of identifying the ideal place to settle in, within your affordable price range, especially in the urban setup, by having to search estate by estate or through agents. We hope to provide a solution that is convenient, time-saving, cost-effective and just a few clicks away without the pressure of struggling with where to start looking.
-**To use the webapp visit us at [Makao.com](https://app.netlify.com/sites/Makao)!**
+**To use the webapp visit us at [Makao.com](https://makao.netlify.app)!**
 
 ## Authors
 
