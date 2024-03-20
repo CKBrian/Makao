@@ -9,8 +9,7 @@ Makao is a web platform designed to simplify the process of searching for and re
 - [Introduction](#introduction)
 - [Features](#features)
 - [Technologies](#technologies)
-- [Getting Started](#What-Makao-offers)
-- [Data Model](#data-model)
+- [Project Description](#What-Makao-offers)
 - [Authors](#authors)
 - [License](#license)
 
