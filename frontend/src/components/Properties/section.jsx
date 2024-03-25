@@ -1,6 +1,28 @@
+import { useEffect, useState } from 'react';
 import './section.css'
+import axiosInstance from '../../axios';
+import PropertyCard from './SemiComponents/PropertyCard';
+import { useNavigate } from 'react-router-dom'
 
 const Section = () => {
+
+    const [properties, setProperties] = useState([]);
+    const navigate = useNavigate()
+
+    const handleSelectedProperty = (property) => {
+        console.log(property)
+        navigate(`/listings/${property.id}`, { state: { property } });
+    };
+
+    useEffect(() => {
+        axiosInstance.get('properties/')
+        .then((response) => {
+            setProperties(response.data);
+        })
+        .catch((err) => {
+            console.log("Failed to fetch Properties: ", err);
+        })
+    }, [])
     return ( 
         <section className="list-main-section">
             <div className="intro">
@@ -20,6 +42,21 @@ const Section = () => {
                         <li><a href="/advertise">Add amenities</a></li>
                     </ul>
                 </nav>
+            </div>
+            <div className="property-list">
+                {properties &&
+                    properties.map((item, key) => (
+                        <PropertyCard
+                        key={key}
+                        name={item.name}
+                        rating={item.rating}
+                        rooms={item.number_rooms}
+                        location={item.location}
+                        price={item.rent_price}
+                        onClick={() => handleSelectedProperty(item)}
+                        />
+                    ))
+                }
             </div>
         </section>
      );

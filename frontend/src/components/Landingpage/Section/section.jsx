@@ -59,7 +59,7 @@ function Section () {
 			{Array.isArray(results) && results.length > 0 && (
 				<div className='result-item'>
 					{results.map((item, key) => (
-						<div key={key} className='result-detail'>
+						<div key={key} className='result-detail' onClick={() => navigate(`/listings/${item.id}`, { state : { item } })}>
 							<p>{item.name}</p>
 						</div>
 					))}

@@ -67,3 +67,12 @@
     background-color: #c2e8ff83;
     color: rgba(0, 15, 34, 1);
 }
+
+.property-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 30px;
+    gap: 30px;
+}

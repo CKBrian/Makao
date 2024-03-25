@@ -1,18 +1,15 @@
 import axios from "axios";
-import Cookie from 'universal-cookie';
-
-
-const cookies = new Cookie()
 
 const baseURL = "http://127.0.0.1:8000/v1/";
+
+const tokens = JSON.parse(localStorage.getItem("user"));
 
 const axiosInstance = axios.create({
   baseURL: baseURL,
   timeout: 5000,
-  withCredentials: true,
   headers: {
-    Authorization: cookies.get("access_token")
-      ? "JWT " + cookies.get("access_token")
+    Authorization: tokens
+      ? "JWT " + tokens.access
       : null,
     "Content-Type": "application/json",
     accept: "application/json",

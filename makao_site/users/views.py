@@ -31,6 +31,7 @@ class CustomTokenObtainPairView(APIView):
         user = serializer.validated_data  # No need to access 'user' key
         refresh = RefreshToken.for_user(user)
         response = Response({
+            'user_id': user.id,
             'refresh': str(refresh),
             'access': str(refresh.access_token),
         }, status=status.HTTP_200_OK)

@@ -4,7 +4,6 @@ import './login.css';
 import Eye from '../../../assets/Icons/eye.svg';
 import Eye_Slash from '../../../assets/Icons/eye-slash.svg';
 import { useNavigate } from 'react-router-dom';
-import Cookie from 'universal-cookie';
 
 
 function LoginForm({ message }) {
@@ -17,7 +16,6 @@ function LoginForm({ message }) {
   const [success, setSuccess] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const navigate = useNavigate();
-  const cookies = new Cookie()
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -35,12 +33,7 @@ function LoginForm({ message }) {
       const data = response.data;
 
       if (response.status === 200) {
-        cookies.set('access_token', data.access, {
-          path: '/',
-          httpOnly: true,
-          secure: false
-        });
-        localStorage.setItem('refresh_token', data.refresh);
+        localStorage.setItem('user', JSON.stringify({user_id: data.user_id, refresh: data.refresh, access: data.access }));
         setSuccess('Login successful!');
         navigate('/');
       } else {

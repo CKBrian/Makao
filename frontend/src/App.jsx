@@ -7,6 +7,8 @@ import PropListings from './components/Properties/PropertyList.jsx';
 import Advertise from './components/Advertise/advert.jsx';
 import SuccessRegistration from './components/Auth/Reg/SuccessReg.jsx';
 import NewProperty from './components/Properties/AddProperty.jsx';
+import PropertyDetail from './components/Properties/SemiComponents/PropertyDetail.jsx';
+import CommunitySection from './components/Community/Section.jsx';
 
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
         <Route path="/advertise" element={<Advertise/>} />
         <Route path='/redirect' element={<SuccessRegistration />} />
         <Route path='/add-property' element={<NewProperty />} />
+        <Route path='/listings/:property_id' element={<PropertyDetail />} />
+        <Route path='/community' element={<CommunitySection />} />
       </Routes>
     </Router>
   );

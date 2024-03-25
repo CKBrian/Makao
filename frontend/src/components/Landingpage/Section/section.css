@@ -144,6 +144,7 @@ div .subtitle{
   margin: 10px;
   border-radius: 10px;
   max-height: 200px;
+  overflow: auto;
 }
 
 .result-item {

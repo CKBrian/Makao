@@ -1,0 +1,48 @@
+.selected-property {
+    padding: 2em;
+}
+
+.property-image img {
+    width: 100%;
+    border-radius: 0.5rem;
+    height: 25em;
+    object-fit: cover;
+  }
+
+.property-image {
+    padding: 2em;
+}
+
+.property-expl {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.property-sec {
+    width: 20em;
+}
+
+.property-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: white;
+}
+
+.property-btns .not-filled {
+    color: white;
+    border: 1px solid white;
+    background-color: transparent;
+}
+
+.property-btns .not-filled:hover {
+    color: white;
+    border: 1px solid white;
+    background-color: #1761a75d;
+    border: 1px solid #1761a75d;
+}
+
+.property-sec h5 {font-size: 24px;}

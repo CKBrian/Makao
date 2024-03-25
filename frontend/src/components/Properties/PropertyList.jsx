@@ -7,7 +7,7 @@ import Section from './section'
 const PropListings = () => {
     return ( 
         <>
-            <MobileMenu property={true}/>
+            <MobileMenu property={true} />
             <Section/>
             <Footer />
         </>

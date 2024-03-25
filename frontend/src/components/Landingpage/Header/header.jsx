@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../../axios';
-import Cookie from 'universal-cookie';
 
 
-const cookies = new Cookie;
-
-function MobileMenu({ property }) {
+function MobileMenu({ property, community }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const refresh_token = localStorage.getItem('refresh_token');
+    const user = localStorage.getItem("user");
+
+    const refresh_token = user?.refresh
 
     if (refresh_token) {
       setIsLoggedIn(true);
@@ -27,12 +26,11 @@ function MobileMenu({ property }) {
 
   const handleLogout = () => {
     axiosInstance.post('users/logout/blacklist/', {
-      refresh_token: localStorage.getItem('refresh_token')
+      refresh_token: user.refresh
     })
       .then(response => {
         if (response.status === 205) {
-        localStorage.removeItem('refresh_token');
-        cookies.remove('access_token');
+        localStorage.removeItem('user');
         setIsLoggedIn(false);
         navigate('/');
         };
@@ -51,11 +49,11 @@ function MobileMenu({ property }) {
         <ul className="mobile-nav">
           <li><a href="/about">About</a></li>
           <li><a href="/listings">Rent</a></li>
-          <li><a href="/community">Community</a></li>
+          {!community && <li><a href="/community">Community</a></li>}
           <li><a href="/advertise">Advertise</a></li>
         </ul>
       </nav>
-      {!property &&
+      {!property && !community &&
       <nav className="login-nav">
         <ul>
           {isLoggedIn ? (
@@ -79,9 +77,9 @@ function MobileMenu({ property }) {
         </ul>
       </nav>
       }
-      {property &&
+      {property || community &&
         <div className="actions">
-          <button onClick={isLoggedIn ? () => navigate('/new-property') : () => navigate('/login')} className="btn">Add Property</button>
+          <button onClick={isLoggedIn ? () => navigate(property ? '/new-property' : '/community') : () => navigate('/login')} className="btn">{property ? "Add Property" : "Join Community"}</button>
         </div>
       }
       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-list mobile-nav-icon" viewBox="0 0 16 16" onClick={toggleMenu}>
