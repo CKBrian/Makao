@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://127.0.0.1:8000/v1/";
+const baseURL = "http://52.91.132.134:8000//v1/";
 
 const tokens = JSON.parse(localStorage.getItem("user"));
 
