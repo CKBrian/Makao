@@ -61,7 +61,7 @@ function LoginForm({ message }) {
 
   return (
     <div className='login-container'>
-      <p className='logo'>Makao</p>
+      <p className='logo' onClick={() => navigate('/')}>Makao</p>
       {message &&
       <div>
         {message}

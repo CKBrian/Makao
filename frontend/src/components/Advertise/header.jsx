@@ -25,18 +25,14 @@ function MobileMenu() {
     <div className="main-header">
         <div onClick={() => navigate('/')} className="brand-logo brand-logo-name">Makao</div>
 
-      <nav className="login-nav">
+      <nav className={`login-nav hd ${isMenuOpen ? `close` : ``}`}>
         <ul>
-          {(
-            <>
-              <li>
-                   <button className="btn login-btn">Ready to show it?</button>
-              </li>
-              <li>
-                  <button onClick={() => navigate('/add-property')} className={`btn signup-btn ${isMenuOpen ? 'close' : ''}`}>Add Property</button>
-              </li>
-            </>
-          )}
+            <li>
+                  <button className="btn login-btn">Ready to show it?</button>
+            </li>
+            <li>
+                <button onClick={() => {isLoggedIn ? navigate('/add-property') : navigate('/login')}} className={`btn signup-btn ${isMenuOpen ? 'close' : ''}`}>Add Property</button>
+            </li>
         </ul>
       </nav>
       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-list mobile-nav-icon" viewBox="0 0 16 16" onClick={toggleMenu}>

@@ -104,7 +104,7 @@ nav a {
 }
 
 @media screen and (max-width: 768px) {
-  .main-nav {
+  .main-nav ul {
     display: none;
   }
 
@@ -114,7 +114,6 @@ nav a {
   }
 
   .open {
-    display: block;
     width: 100%;
     margin-right: 10px;
     margin-left: 10px;
@@ -122,6 +121,7 @@ nav a {
   }
 
   .open ul {
+    display: block;
     overflow-y: scroll;
   }
 
@@ -167,6 +167,10 @@ nav a {
 
   .login-nav button {
     width: auto;
+  }
+  .main-header {
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 

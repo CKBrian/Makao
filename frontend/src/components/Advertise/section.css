@@ -107,4 +107,13 @@
     .intro-section .top {
       font-size: 1.5em;
     }
+
+    .hd {
+      display: none;
+    }
+
+    .close {
+      display: block;
+      overflow: auto;
+    }
   }
