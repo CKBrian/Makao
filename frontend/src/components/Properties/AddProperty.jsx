@@ -10,7 +10,8 @@ import PropertyConfirm from './PropertyForms/PropConfirm';
 
 function NewProperty() {
     const [formData, setformData] = useState({
-        amenities: []
+        amenities: [],
+        owner: ''
     });
     const [step, setStep] = useState(1);
     const [createdProperty, setCreatedProperty] = useState({});
@@ -25,6 +26,9 @@ function NewProperty() {
     };
 
     const handleCreateProperty = async () => {
+        const user = localStorage.getItem('user');
+        const user_id = user.user_id;
+        formData.owner = user_id;
         try {
             await axiosInstance.post('properties/property-create/', formData)
             .then(response => {

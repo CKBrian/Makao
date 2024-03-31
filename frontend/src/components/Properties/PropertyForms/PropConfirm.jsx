@@ -6,6 +6,7 @@ import axiosInstance from "../../../axios";
 
 const PropertyConfirm = ({ formData, onNext, onPrev }) => {
     const [place, setPlace] = useState({});
+    const [owner, setOwner] = useState({})
     useEffect(() => {
         try {
             if (formData.place_id) {
@@ -13,6 +14,10 @@ const PropertyConfirm = ({ formData, onNext, onPrev }) => {
                 .then(response => {
                     if (response.status === 200) {
                         setPlace(response.data);
+                        axiosInstance.get(`users/${formData.owner}`)
+                        .then(r => {
+                            setOwner(r.data);
+                        })
                     }
                 });
             }
@@ -29,7 +34,7 @@ const PropertyConfirm = ({ formData, onNext, onPrev }) => {
                 </a>
             </header>
             <section className="sec-cr">
-                <p className="sect-title">Confirm Your details</p>
+                <p className="sect-title">Please Confirm Your Details {owner.first_name}</p>
                 <ul className="property-details">
                     <li className="">Property Name :  {formData.name}</li>
                     <li className="">Property type :  {formData.property_type}</li>

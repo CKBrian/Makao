@@ -7,8 +7,8 @@ import Section from './section'
 const PropListings = () => {
     return ( 
         <>
-            <MobileMenu property={true} />
-            <Section/>
+            <MobileMenu property={true}/>
+            <Section />
             <Footer />
         </>
      );

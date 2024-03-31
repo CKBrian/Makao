@@ -41,6 +41,7 @@ body {
   border: none;
   cursor: pointer;
   margin-left: 2em;
+  font-family: inherit;
 }
 
 .btn:hover {

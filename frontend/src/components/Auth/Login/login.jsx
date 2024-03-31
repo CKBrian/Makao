@@ -63,9 +63,10 @@ function LoginForm({ message }) {
     <div className='login-container'>
       <p className='logo' onClick={() => navigate('/')}>Makao</p>
       {message &&
-      <div>
-        {message}
-        </div>}
+        <div className='msg'>
+          {message}
+        </div>
+      }
       <form onSubmit={handleLogin} className='login-form'>
       <h6 className='login-title'>Login</h6>
         <input
@@ -89,10 +90,11 @@ function LoginForm({ message }) {
             className='toggle-password'
             onClick={togglePasswordVisibility}
           >
-            <img src={isPasswordShown ? Eye_Slash : Eye} alt='show' />
+            {/* <img src={isPasswordShown ? Eye_Slash : Eye} alt='show' /> */}
+            <p>{isPasswordShown ? 'hide' : 'show'}</p>
           </span>
         </div>
-        <button type='submit' className='submit-btn' disabled={submitting}>
+        <button type='submit' className='submit-btn' disabled={submitting || !formData.email || !formData.password}>
           {submitting ? 'Logging you in...' : 'Login'}
         </button>
         <p className='disclaimer'>Don't have an account?<a href='/signup'>SignUp</a></p>

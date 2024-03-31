@@ -28,6 +28,11 @@ function Section () {
 
     };
 
+	const handleSelectedProperty = (property) => {
+        console.log(property)
+        navigate(`/listings/${property.id}`, { state: { property } });
+    };
+
     const handleInputChange = (e) => {
         const { value } = e.target;
         setSearch(value);
@@ -59,7 +64,7 @@ function Section () {
 			{Array.isArray(results) && results.length > 0 && (
 				<div className='result-item'>
 					{results.map((item, key) => (
-						<div key={key} className='result-detail' onClick={() => navigate(`/listings/${item.id}`, { state : { item } })}>
+						<div key={key} className='result-detail' onClick={() => handleSelectedProperty(item)}>
 							<p>{item.name}</p>
 						</div>
 					))}

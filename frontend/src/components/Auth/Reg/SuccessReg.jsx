@@ -22,6 +22,7 @@ function SuccessRegistration() {
 
     return (
         <div className='redirect'>
+            <div className="logo">Makao</div>
             <p>Account Successfully created. You will be Redirected to the Login page in {countdown} seconds.</p>
             <button className='btn' onClick={() => navigate('/login')}>Login Right Now</button>
         </div>

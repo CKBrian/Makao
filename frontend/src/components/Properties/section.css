@@ -76,3 +76,12 @@
     margin: 30px;
     gap: 30px;
 }
+
+@media (max-width: 767px) {
+    .intro .top-title {
+        font-size: 24px;
+    }
+    .intro-subnav .subnav {
+        font-size: 12px;
+    }
+}

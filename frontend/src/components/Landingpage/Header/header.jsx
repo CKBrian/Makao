@@ -2,18 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../../axios';
 
-
 function MobileMenu({ property, community }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const user = localStorage.getItem("user");
-
-    const refresh_token = user?.refresh
-
-    if (refresh_token) {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
@@ -25,19 +23,22 @@ function MobileMenu({ property, community }) {
   };
 
   const handleLogout = () => {
-    axiosInstance.post('users/logout/blacklist/', {
-      refresh_token: user.refresh
-    })
-      .then(response => {
-        if (response.status === 205) {
-        localStorage.removeItem('user');
-        setIsLoggedIn(false);
-        navigate('/');
-        };
+    if (user) {
+      axiosInstance.post('users/logout/blacklist/', {
+        refresh_token: user.refresh
       })
-      .catch(error => {
-        console.error('Error logging out:', error);
-      });
+        .then(response => {
+          if (response.status === 205) {
+            localStorage.removeItem('user');
+            setIsLoggedIn(false);
+            setUser(null); // Reset user state
+            navigate('/');
+          };
+        })
+        .catch(error => {
+          console.error('Error logging out:', error);
+        });
+    }
   };
 
   return (
